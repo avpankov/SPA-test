@@ -1,0 +1,9 @@
+<div>
+    <input type="text" [(ngModel)]="searchCar">
+    <hr>
+    <ul>
+      <li *ngFor="let car of cars | filter: searchCar">
+        {{car.brand}}
+      </li>
+    </ul>
+  </div>

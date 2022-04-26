@@ -1,0 +1,3 @@
+<app-add-form (onAddUser)="updateUsersList($event)"></app-add-form>
+<hr>
+<app-user *ngFor="let user of users" [userData]="user"></app-user>

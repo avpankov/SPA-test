@@ -1,0 +1,36 @@
+<form (ngSubmit)="submitForm(form)" #form="ngForm">
+    <br>
+    <div ngModelGroup="user" #user="ngModelGroup" class="user">
+        <label for="">Your email:
+            <input type="text" ngModel name="email" required email #email="ngModel"></label>
+            <p *ngIf="email.invalid && email.touched">Enter correct email!</p>
+            <br><br>
+        <label for="">Your password:
+            <input type="password" ngModel name="password" required
+            #pass="ngModel"
+            ></label>
+            <p *ngIf="pass.invalid && pass.touched">Password shouldn't be empty!</p> 
+    </div>
+    <p *ngIf="user.invalid && user.touched">User data incorrect!</p>
+        <br><br>
+    <label for="">Choose country
+        <select 
+        [ngModel]="defaultCountry"
+        name="country">
+            <option value="by">Belarus</option>
+            <option value="ua">Ukraine</option>
+            <option value="pl">Poland</option>
+        </select></label> <br><br>
+    <div *ngFor="let answer of answers">
+        <label for="">
+            <input type="radio" [value]="answer.type" 
+            [ngModel]="defaultAnswer"
+            name="answer"
+            > {{answer.text}}
+        </label>
+    </div>
+    <br>
+    <button type="submit"
+    [disabled]="form.invalid"
+    >Save</button>
+</form>

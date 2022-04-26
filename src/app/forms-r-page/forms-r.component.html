@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <br>
+    <div>
+        <label for="">Your email:
+            <input type="text" formControlName="email"></label>
+            <br><br>
+        <label for="">Your password:
+            <input type="password" formControlName="pass" [ngClass]="{'has-error': form.get('pass')?.invalid && form.get('pass')?.touched}"></label>
+            <p *ngIf="form.get('pass')?.invalid && form.get('pass')?.touched">Password shouldn't be empty!</p>
+    </div>
+        <br><br>
+    <label for="">Choose country
+        <select formControlName="country">
+            <option value="by">Belarus</option>
+            <option value="ua">Ukraine</option>
+            <option value="pl">Poland</option>
+        </select></label> <br><br>
+    <div *ngFor="let answer of answers">
+        <label for="">
+            <input type="radio" formControlName="answer" [value]="answer.type"> {{answer.text}}
+        </label>
+    </div>
+    <br>
+    <button type="submit" [disabled]="form.invalid">Save</button>
+</form>
